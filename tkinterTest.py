@@ -1,14 +1,16 @@
 from tkinter import *
+import random
 
 top = Tk()
-playlist = []
+songList = []
+myRolls = []
 
-def printList():
-    print(playlist)
+def printSongList():
+    print(songList)
 
-def exportPlaylist():
-    with open("playlist.txt", "w") as f:
-        for song in playlist:
+def exportSongList():
+    with open("songList.txt", "w") as f:
+        for song in songList:
             f.write("%s\n" % song)
 
 def clearWindow():
@@ -32,37 +34,55 @@ def mainMenu():
 def week1():
     
     def addSong():
-        playlist.append(E1.get())
+        songList.append(E1.get())
         E1.delete(0, END)
         
     clearWindow()
 
     #This is a Label widget
-    L1 = Label(top, text="Playlist Generator")
+    L1 = Label(top, text="ourTunes")
     L1.grid(column = 0, row = 1)
 
     #This is a Text Entry widget
     E1 = Entry(top, bd = 5)
     E1.grid(column = 0, row = 2)
 
-    #this is a Button widget
-    B1 = Button(text=" + ", bg = "#B4F9FF", command = addSong)
+    #This is a Button widget
+    B1 = Button(text = " + ", bg = "white", command = addSong)
     B1.grid(column = 1, row = 2)
 
-    B2 = Button(text="Print List", bg = "Orange", command = printList)
-    B2.grid(column = 0, row = 3)
+    B2 = Button(text="Print List", bg = "#d4850f", command = printSongList)
+    B2.grid(column = 0, row = 1)
 
-    B3 = Button(text="Export List", bg = "#8a7e42", command = exportPlaylist)
+    B3 = Button(text="Export List", bg = "#4940e6", command = exportSongList)
     B3.grid(column = 1, row = 3)
 
-    Bclear = Button(text="Main Menu", bg = "Red", command = mainMenu)
-    Bclear.grid(column = 1, row = 4)
+    B4 = Button(text="Main Menu", bg = "yellow", command = mainMenu)
+    B4.grid(column = 0, row = 3)
 
 def week2():
+    def rollDice():
+        rollTimes = E2W2.get()
+        dieType = E1W2.get()
+
+        clearWindow()
+        
+        for x in range(0, int(rollTimes)):
+            myRolls.append(random.randint(1, int(dieType)))
+
+        L4W2 = Label(top, text= "Here are your rolls!" )
+        L4W2.grid(column= 0, row= 1)
+        
+        L5W2 = Label(top, text= "{}".format(myRolls))
+        L5W2.grid(column= 0, row= 3)
+
+        B2W2 = Button(text= "Main Menu", bg= "yellow", command = mainMenu)
+        B2W2.grid(column= 2, row= 4)
+
     clearWindow()
 
     L1W2 = Label(top, text= "Dice Roller App")
-    L1W2.grid(column=2, row=1)
+    L1W2.grid(column=2, row=0)
     
     L2W2 = Label(top, text= "# of Sides")
     L2W2.grid(column=0, row=2)
@@ -70,15 +90,24 @@ def week2():
     L3W2 = Label(top, text= "# of Rolls")
     L3W2.grid(column=3, row=2)
 
-    E1W2 = Label(top, bd = 5)
+    E1W2 = Entry(top, bd = 5)
     E1W2.grid(column=0, row=3)
     
-    E2W2 = Label(top, bd = 5)
+    E2W2 = Entry(top, bd = 5)
     E2W2.grid(column=3, row=3)
 
-    B1W2 = Label(text="Roll 'em", bg = "yellow")
+    B1W2 = Button(text="Roll 'em", bg = "yellow", command = rollDice)
     B1W2.grid(column=2, row=4)
 
+def week3():
+    
+    clearWindow()
+    
+    L1W3 = Label(top, text= "Check back later!")
+    L1W3.grid(column=2, row=0)
+
+    B1W3 = Button(top, text= "Main Menu", command= mainMenu)
+    B1W3.grid(column=2, row=2)
 
 
 
