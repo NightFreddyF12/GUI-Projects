@@ -100,14 +100,6 @@ def week2():
     B1W2.grid(column=2, row=4)
 
 def week3():
-    
-    clearWindow()
-    
-    L1W3 = Label(top, text= "Check back later!")
-    L1W3.grid(column=2, row=0)
-
-    B1W3 = Button(top, text= "Main Menu", command= mainMenu)
-    B1W3.grid(column=2, row=2)
 
 
 
