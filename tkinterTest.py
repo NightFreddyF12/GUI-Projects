@@ -271,10 +271,10 @@ def week3():
         if len(ar) > 10000:
             raise Exception("Hey, you can't go above 10,000 numbers, bud! Try taking some out!")
 
-if __name__ == "__main__":
-    mainProgram()
-
-
     if __name__ == "__main__":
-        mainMenu()
-        top.mainloop()
+        mainProgram()
+
+
+if __name__ == "__main__":
+    mainMenu()
+    top.mainloop()
